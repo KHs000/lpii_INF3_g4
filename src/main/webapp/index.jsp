@@ -1,5 +1,8 @@
 <html>
+<%@ page import="br.cefetmg.inf.teste.teste;" %>
 <body>
-<h2>Hello World!</h2>
+    <%
+    out.print(teste.suamae());
+    %>
 </body>
 </html>
