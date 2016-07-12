@@ -23,7 +23,7 @@ public class UsuarioDAO implements IUsuarioDAO {
         try {
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM usuario WHERE nome = " + login;
+            String sql = "SELECT * FROM Usuário WHERE log_Usuario = " + login;
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, login);
@@ -52,7 +52,7 @@ public class UsuarioDAO implements IUsuarioDAO {
         try{
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "INSERT INTO usuario (cpf_Usuario, log_Usuario, pwd_Usuario) " + 
+            String sql = "INSERT INTO Usuário (cpf_Usuario, log_Usuario, pwd_Usuario) " + 
                     "VALUES(?,?,?) RETURNING cpf_Usuario";
 
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -155,7 +155,7 @@ public class UsuarioDAO implements IUsuarioDAO {
         try{
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM usuario";
+            String sql = "SELECT * FROM Usuário";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
