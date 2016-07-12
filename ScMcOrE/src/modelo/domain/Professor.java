@@ -7,47 +7,21 @@ package modelo.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  *
  * @author alunoccc
  */
-@Entity
-@Table(name = "Professor")
-@NamedQueries({
-    @NamedQuery(name = "Professor.findAll", query = "SELECT p FROM Professor p")})
-public class Professor implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "cpf_Professor")
+
+public class Professor {
+    
     private String cpfProfessor;
-    @Basic(optional = false)
-    @Column(name = "nom_Professor")
-    private long nomProfessor;
-    @Basic(optional = false)
-    @Column(name = "log_Professor")
+    private String nomProfessor;
     private String logProfessor;
-    @Basic(optional = false)
-    @Column(name = "pwd_Professor")
     private String pwdProfessor;
-    @ManyToMany(mappedBy = "professorList")
     private List<Disciplina> disciplinaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cpfProfessor")
-    private List<Alocação> alocaçãoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cpfProfessor")
-    private List<EncargoDidático> encargoDidáticoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cpfCoordenador")
+    private List<Alocacao> alocacaoList;
+    private List<EncargoDidatico> encargoDidaticoList;
     private List<Curso> cursoList;
 
     public Professor() {
@@ -57,7 +31,7 @@ public class Professor implements Serializable {
         this.cpfProfessor = cpfProfessor;
     }
 
-    public Professor(String cpfProfessor, long nomProfessor, String logProfessor, String pwdProfessor) {
+    public Professor(String cpfProfessor, String nomProfessor, String logProfessor, String pwdProfessor) {
         this.cpfProfessor = cpfProfessor;
         this.nomProfessor = nomProfessor;
         this.logProfessor = logProfessor;
@@ -72,11 +46,11 @@ public class Professor implements Serializable {
         this.cpfProfessor = cpfProfessor;
     }
 
-    public long getNomProfessor() {
+    public String getNomProfessor() {
         return nomProfessor;
     }
 
-    public void setNomProfessor(long nomProfessor) {
+    public void setNomProfessor(String nomProfessor) {
         this.nomProfessor = nomProfessor;
     }
 
@@ -104,20 +78,20 @@ public class Professor implements Serializable {
         this.disciplinaList = disciplinaList;
     }
 
-    public List<Alocação> getAlocaçãoList() {
-        return alocaçãoList;
+    public List<Alocacao> getAlocacaoList() {
+        return alocacaoList;
     }
 
-    public void setAlocaçãoList(List<Alocação> alocaçãoList) {
-        this.alocaçãoList = alocaçãoList;
+    public void setAlocacaoList(List<Alocacao> alocacaoList) {
+        this.alocacaoList = alocacaoList;
     }
 
-    public List<EncargoDidático> getEncargoDidáticoList() {
-        return encargoDidáticoList;
+    public List<EncargoDidatico> getEncargoDidaticoList() {
+        return encargoDidaticoList;
     }
 
-    public void setEncargoDidáticoList(List<EncargoDidático> encargoDidáticoList) {
-        this.encargoDidáticoList = encargoDidáticoList;
+    public void setEncargoDidaticoList(List<EncargoDidatico> encargoDidaticoList) {
+        this.encargoDidaticoList = encargoDidaticoList;
     }
 
     public List<Curso> getCursoList() {
