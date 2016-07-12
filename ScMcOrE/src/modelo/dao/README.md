@@ -1,0 +1,1 @@
+Aqui fica a abstração *INTERFACE* das classes DAO

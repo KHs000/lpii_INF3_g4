@@ -1,0 +1,1 @@
+Aqui fica a abstração *interface* das classes de persistencia *SERVIÇO*

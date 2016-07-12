@@ -1,0 +1,1 @@
+Aqui fica a *implementação* das classes de domínio
