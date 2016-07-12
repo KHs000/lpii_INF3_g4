@@ -16,7 +16,7 @@ import java.util.List;
 public class Professor {
     
     private String cpfProfessor;
-    private long nomProfessor;
+    private String nomProfessor;
     private String logProfessor;
     private String pwdProfessor;
     private List<Disciplina> disciplinaList;
@@ -31,7 +31,7 @@ public class Professor {
         this.cpfProfessor = cpfProfessor;
     }
 
-    public Professor(String cpfProfessor, long nomProfessor, String logProfessor, String pwdProfessor) {
+    public Professor(String cpfProfessor, String nomProfessor, String logProfessor, String pwdProfessor) {
         this.cpfProfessor = cpfProfessor;
         this.nomProfessor = nomProfessor;
         this.logProfessor = logProfessor;
@@ -46,11 +46,11 @@ public class Professor {
         this.cpfProfessor = cpfProfessor;
     }
 
-    public long getNomProfessor() {
+    public String getNomProfessor() {
         return nomProfessor;
     }
 
-    public void setNomProfessor(long nomProfessor) {
+    public void setNomProfessor(String nomProfessor) {
         this.nomProfessor = nomProfessor;
     }
 

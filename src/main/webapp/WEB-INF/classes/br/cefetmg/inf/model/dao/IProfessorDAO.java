@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.cefetmg.inf.model.dao.impl;
+package br.cefetmg.inf.model.dao;
 
 import br.cefetmg.inf.util.db.persistence.GenericNamedDAO;
-import modelo.domain.Usuario;
+import modelo.domain.Professor;
 
 /**
  *
  * @author Henrique
  */
-public interface IUsuarioDAO extends GenericNamedDAO<Usuario>{
+public interface IProfessorDAO extends GenericNamedDAO<Professor>{
     
 }
