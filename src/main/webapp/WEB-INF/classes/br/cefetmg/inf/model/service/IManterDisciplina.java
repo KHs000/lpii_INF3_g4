@@ -1,4 +1,4 @@
-package WEB-INF.classes.br.cefetmg.inf.model.service;
+package br.cefetmg.inf.model.service;
 
 import br.cefetmg.inf.model.domain.Disciplina;
 import br.cefetmg.inf.util.db.exception.NegocioException;
