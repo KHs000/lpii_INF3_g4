@@ -9,7 +9,10 @@ public class Curso {
     
     private Long id;
     private String Nome;
-    private Integer cargaHoraria;
+    private String regime;
+    private String ensino;
+    private String turno;
+    private String cpf_coord;
     
     public Curso () {}
 
@@ -29,12 +32,36 @@ public class Curso {
         this.Nome = Nome;
     }
 
-    public Integer getCargaHoraria() {
-        return cargaHoraria;
+    public String getRegime() {
+        return regime;
     }
 
-    public void setCargaHoraria(Integer cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
+    public void setRegime(String regime) {
+        this.regime = regime;
+    }
+
+    public String getEnsino() {
+        return ensino;
+    }
+
+    public void setEnsino(String ensino) {
+        this.ensino = ensino;
+    }
+
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    public String getCpf_coord() {
+        return cpf_coord;
+    }
+
+    public void setCpf_coord(String cpf_coord) {
+        this.cpf_coord = cpf_coord;
     }
     
     @Override
