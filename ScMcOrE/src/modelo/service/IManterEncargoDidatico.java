@@ -16,7 +16,9 @@ import modelo.domain.EncargoDidático;
  */
 public interface IManterEncargoDidatico {
     
-    public void cadastrar(EncargoDidático encargo) throws PersistenciaException, NegocioException;
+    public Integer cadastrar(EncargoDidático encargo) throws PersistenciaException, NegocioException;
+    public void atualizar(EncargoDidático encargo) throws PersistenciaException, NegocioException;
+    public void excluir(EncargoDidático encargo) throws PersistenciaException, NegocioException;
     public List<EncargoDidático> listarTodos() throws PersistenciaException, NegocioException;
     
 }

@@ -18,11 +18,11 @@ public class ManterUsuario implements IManterUsuario{
     public void cadastrar(Usuario usuario) throws PersistenciaException, NegocioException {
         
         if (usuario.getCpfUsuario()== "" || usuario.getCpfUsuario()== null || usuario.getCpfUsuario().length()>11)
-            throw new NegocioException("CPF inv·lido");
+            throw new NegocioException("CPF inv√°lido");
         if (usuario.getCpfUsuario()== "" || usuario.getCpfUsuario()== null || usuario.getCpfUsuario().length()>11)
-            throw new NegocioException("CPF inv·lido");
+            throw new NegocioException("CPF inv√°lido");
         if (usuario.getCpfUsuario()== "" || usuario.getCpfUsuario()== null || usuario.getCpfUsuario().length()>11)
-            throw new NegocioException("CPF inv·lido");
+            throw new NegocioException("CPF inv√°lido");
         
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         String usuarioCpf =  usuarioDAO.Inserir(usuario);

@@ -6,6 +6,7 @@
 package modelo.domain;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -40,11 +41,11 @@ public class EncargoDidático implements Serializable {
     @Basic(optional = false)
     @Column(name = "hor_Inicio")
     @Temporal(TemporalType.TIME)
-    private Date horInicio;
+    private Time horInicio;
     @Basic(optional = false)
     @Column(name = "hor_Fim")
     @Temporal(TemporalType.TIME)
-    private Date horFim;
+    private Time horFim;
     @Basic(optional = false)
     @Column(name = "dia_Semana")
     private short diaSemana;
@@ -68,7 +69,7 @@ public class EncargoDidático implements Serializable {
         this.idEncargo = idEncargo;
     }
 
-    public EncargoDidático(Integer idEncargo, Date horInicio, Date horFim, short diaSemana) {
+    public EncargoDidático(Integer idEncargo, Time horInicio, Time horFim, short diaSemana) {
         this.idEncargo = idEncargo;
         this.horInicio = horInicio;
         this.horFim = horFim;
@@ -83,19 +84,21 @@ public class EncargoDidático implements Serializable {
         this.idEncargo = idEncargo;
     }
 
-    public Date getHorInicio() {
+    
+
+    public Time getHorInicio() {
         return horInicio;
     }
 
-    public void setHorInicio(Date horInicio) {
+    public void setHorInicio(Time horInicio) {
         this.horInicio = horInicio;
     }
 
-    public Date getHorFim() {
+    public Time getHorFim() {
         return horFim;
     }
 
-    public void setHorFim(Date horFim) {
+    public void setHorFim(Time horFim) {
         this.horFim = horFim;
     }
 

@@ -39,7 +39,6 @@ public class ProfessorDAO implements IProfessorDAO {
         return id;
     }
 
-    @Override
     public void atualizar(Professor professor) throws PersistenciaException {
 
         try{
@@ -90,7 +89,6 @@ public class ProfessorDAO implements IProfessorDAO {
 
     }
 
-    @Override
     public List<Professor> listarTodos() throws PersistenciaException {
 
         List<Professor> professorList = new ArrayList<Professor>();

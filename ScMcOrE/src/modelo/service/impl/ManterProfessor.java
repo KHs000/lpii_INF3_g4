@@ -20,13 +20,13 @@ public class ManterProfessor implements IManterProfessor{
         
         //RN009
         if ( professor.getCpfProfessor()== null || professor.getCpfProfessor()== ""  || professor.getCpfProfessor().length()>12)
-            throw new NegocioException("CPF inválido");
+            throw new NegocioException("CPF invÃ¡lido");
         if ( professor.getNomProfessor()== null || professor.getNomProfessor()== ""  )
-            throw new NegocioException("Nome inválido");
+            throw new NegocioException("Nome invÃ¡lidolido");
         if ( professor.getLogProfessor()== null || professor.getLogProfessor()== "" )
-            throw new NegocioException("Log-in inválido");
+            throw new NegocioException("Log-in invÃ¡lido");
         if ( professor.getPwdProfessor()== null || professor.getPwdProfessor()== "" || professor.getPwdProfessor().length()<8 )
-            throw new NegocioException("Senha inválida");
+            throw new NegocioException("Senha invÃ¡lida");
         ProfessorDAO professorDAO = new ProfessorDAO();
         String CpfProfessor = professorDAO.Inserir(professor);
         professor.setCpfProfessor(CpfProfessor);
