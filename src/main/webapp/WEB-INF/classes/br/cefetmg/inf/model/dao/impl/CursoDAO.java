@@ -24,7 +24,7 @@ public class CursoDAO implements ICursoDAO {
         try {
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM curso WHERE nome = " + nome;
+            String sql = "SELECT * FROM Curso WHERE nom_Curso = " + nome;
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nome);
@@ -33,9 +33,12 @@ public class CursoDAO implements ICursoDAO {
 
             if(resultSet.next()) {
                     curso = new Curso();
-                    curso.setId(resultSet.getLong("id"));
-                    curso.setNome(resultSet.getString("nome"));
-                    curso.setCargaHoraria(resultSet.getInt("cargaHoraria"));
+                    curso.setId(resultSet.getLong("id_Curso"));
+                    curso.setNome(resultSet.getString("nom_Curso"));
+                    curso.setRegime(resultSet.getString("idt_Regime"));
+                    curso.setEnsino(resultSet.getString("nvl_Ensino"));
+                    curso.setTurno(resultSet.getString("idt_Turno"));
+                    curso.setCpf_coord(resultSet.getString("cpf_Coordenador"));
             }
             connection.close();
 
@@ -54,18 +57,17 @@ public class CursoDAO implements ICursoDAO {
         try{
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "INSERT INTO curso (nome, cargaHoraria) " + 
-                    "VALUES(" + curso.getNome() + ", " + curso.getCargaHoraria() + ") RETURNING id";
+            String sql = "INSERT INTO Curso (nom_Curso, idt_Regime, nvl_Ensino, idt_Turno, cpf_Coordenador) " + 
+                    "VALUES(" + curso.getNome() + ", " + curso.getRegime() + ", " 
+                    + curso.getEnsino() + ", " + curso.getTurno() + ", "
+                    + curso.getCpf_coord() + ") RETURNING id_Curso";
 
             PreparedStatement statement = connection.prepareStatement(sql);
-
-            statement.setString(1, curso.getNome());
-            statement.setLong(2, curso.getCargaHoraria());
 
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                id = new Long(resultSet.getLong("id"));
+                id = new Long(resultSet.getLong("id_Curso"));
                 curso.setId(id);
             }
 
@@ -84,15 +86,21 @@ public class CursoDAO implements ICursoDAO {
         try{
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "UPDATE curso " +
-                            " SET nome = ?, " +
-                            "     cargaHoraria = ?," +
-                            " WHERE id = ?";
+            String sql = "UPDATE Curso " +
+                            " SET nom_Curso = ?," +
+                            "     idt_Regime = ?," +
+                            "     nvl_Ensino = ?," +
+                            "     idt_Turno = ?," +
+                            "     cpf_Coordenador = ?" +
+                            " WHERE id_Curso = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setString(1, curso.getNome());
-            statement.setLong(2, curso.getCargaHoraria());
+            statement.setString(2, curso.getRegime());
+            statement.setString(3, curso.getEnsino());
+            statement.setString(4, curso.getTurno());
+            statement.setString(5, curso.getCpf_coord());
             statement.setLong(5, curso.getId());
 
             statement.execute();
@@ -110,7 +118,7 @@ public class CursoDAO implements ICursoDAO {
         try{
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "DELETE FROM curso WHERE id = ?";
+            String sql = "DELETE FROM Curso WHERE id_Curso = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -130,7 +138,7 @@ public class CursoDAO implements ICursoDAO {
         try {
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM curso WHERE id = ?";
+            String sql = "SELECT * FROM Curso WHERE id_Curso = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setLong(1, id);
@@ -139,9 +147,12 @@ public class CursoDAO implements ICursoDAO {
 
             if(resultSet.next()) {
                     curso = new Curso();
-                    curso.setId(resultSet.getLong("id"));
-                    curso.setNome(resultSet.getString("nome"));
-                    curso.setCargaHoraria(resultSet.getInt("cargaHoraria"));
+                    curso.setId(resultSet.getLong("id_Curso"));
+                    curso.setNome(resultSet.getString("nom_Curso"));
+                    curso.setRegime(resultSet.getString("idt_Regime"));
+                    curso.setEnsino(resultSet.getString("nvl_Ensino"));
+                    curso.setTurno(resultSet.getString("idt_Turno"));
+                    curso.setCpf_coord(resultSet.getString("cpf_Coordenador"));
             }
             connection.close();
 
@@ -160,7 +171,7 @@ public class CursoDAO implements ICursoDAO {
         try{
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM curso";
+            String sql = "SELECT * FROM Curso";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -168,9 +179,12 @@ public class CursoDAO implements ICursoDAO {
 
             while(resultSet.next()){
                     Curso curso = new Curso();
-                    curso.setId(resultSet.getLong("id"));
-                    curso.setNome(resultSet.getString("nome"));
-                    curso.setCargaHoraria(resultSet.getInt("cargaHoraria"));
+                    curso.setId(resultSet.getLong("id_Curso"));
+                    curso.setNome(resultSet.getString("nom_Curso"));
+                    curso.setRegime(resultSet.getString("idt_Regime"));
+                    curso.setEnsino(resultSet.getString("nvl_Ensino"));
+                    curso.setTurno(resultSet.getString("idt_Turno"));
+                    curso.setCpf_coord(resultSet.getString("cpf_Coordenador"));
 
                     cursoList.add(curso);
             }

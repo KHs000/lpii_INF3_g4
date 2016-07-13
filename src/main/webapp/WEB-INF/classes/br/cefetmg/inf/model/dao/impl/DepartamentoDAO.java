@@ -8,6 +8,7 @@ import br.cefetmg.inf.util.db.exception.PersistenciaException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public class DepartamentoDAO implements IDepartamentoDAO{
         try {
             Connection connection = JDBCConnectionManager.getInstance().getConnection();
             
-            String sql = "SELECT * FROM Departamento WHERE nome = " + nome;
+            String sql = "SELECT * FROM Departamento WHERE nom_Departamento = " + nome;
             
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nome);
@@ -32,13 +33,8 @@ public class DepartamentoDAO implements IDepartamentoDAO{
             
             if (resultSet.next()) {
                 departamento = new Departamento();
-                departamento.setId(resultSet.getLong("id"));
-                departamento.setNome(resultSet.getString("nome"));
-                departamento.setSigla(resultSet.getString("sigla"));
-                departamento.setTelefone(resultSet.getString("telefone"));
-                departamento.setEndereco(resultSet.getString("endereco"));
-                departamento.setEmail(resultSet.getString("email"));
-                departamento.setUrl(resultSet.getString("url"));
+                departamento.setId(resultSet.getLong("id_Departamento"));
+                departamento.setNome(resultSet.getString("nom_Departamento"));
                 //departamento.setUnidadeDeEnsino(resultSet.getObject("Und_Ensino")); Und_Ensino DEVE SER CONVERTIDO PARA OBJECT
             }
             connection.close();
@@ -50,28 +46,136 @@ public class DepartamentoDAO implements IDepartamentoDAO{
     }
 
     @Override
-    public Long inserir(Departamento obj) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Long inserir(Departamento departamento) throws PersistenciaException {
+        
+        Long id = null;
+
+        try{
+            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+
+            String sql = "INSERT INTO Departamento (nom_Departamento) " + 
+                    "VALUES(" + departamento.getNome() + ") RETURNING id_Departamento";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, departamento.getNome());
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                id = new Long(resultSet.getLong("id_Departamento"));
+                departamento.setId(id);
+            }
+
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new PersistenciaException(e.getMessage(), e);
+        }
+
+        return id;  
     }
 
     @Override
-    public void atualizar(Departamento obj) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void atualizar(Departamento departamento) throws PersistenciaException {
+        
+        try{
+            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+
+            String sql = "UPDATE Departamento " +
+                            "SET nom_Departamento = ? " +
+                            "WHERE id_Departamento = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, departamento.getNome());
+            statement.setLong(2, departamento.getId());
+
+            statement.execute();
+
+            connection.close();
+        } catch(Exception e){
+            e.printStackTrace();
+            throw new PersistenciaException(e.getMessage(), e);
+        }      
     }
 
     @Override
     public void excluir(Long id) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+
+            String sql = "DELETE FROM Departamento WHERE id_Departamento = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setLong(1, id);
+
+            statement.execute();
+            connection.close();
+        }catch(Exception e){
+            e.printStackTrace();
+            throw new PersistenciaException(e.getMessage(), e);
+        }    
     }
 
     @Override
     public Departamento consultarPorId(Long id) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Departamento departamento = null;
+        
+        try {
+            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+
+            String sql = "SELECT * FROM Departamento WHERE id_Departamento = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet.next()) {
+                    departamento = new Departamento();
+                    departamento.setId(resultSet.getLong("id_Departamento"));
+                    departamento.setNome(resultSet.getString("nom_Departamento"));
+            }
+            connection.close();
+
+        } catch (Exception e) {
+                e.printStackTrace();
+                throw new PersistenciaException(e.getMessage(), e);
+        }
+        return departamento;   
     }
 
     @Override
     public List<Departamento> listarTodos() throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<Departamento> departamentoList = new ArrayList<Departamento>();
+        
+        try{
+            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+
+            String sql = "SELECT * FROM Departamento";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                    Departamento departamento = new Departamento();
+                    departamento.setId(resultSet.getLong("id_Departamento"));
+                    departamento.setNome(resultSet.getString("nom_Departamento"));
+
+                    departamentoList.add(departamento);
+            }
+            connection.close();
+        }catch (Exception e){
+                e.printStackTrace();
+                throw new PersistenciaException(e.getMessage(), e);
+        }
+
+        return departamentoList; 
     }
     
 }
