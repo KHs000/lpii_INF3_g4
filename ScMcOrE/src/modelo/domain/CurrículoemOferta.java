@@ -39,7 +39,7 @@ public class CurrículoemOferta implements Serializable {
         @JoinColumn(name = "id_Disciplina", referencedColumnName = "id_Disciplina"),
         @JoinColumn(name = "idt_Relacao", referencedColumnName = "idt_Relacao")})
     @ManyToOne(optional = false)
-    private RelaçãoCursoDisciplina relaçãoCursoDisciplina;
+    private Modulo relaçãoCursoDisciplina;
     @JoinColumn(name = "idt_Periodo", referencedColumnName = "idt_Periodo")
     @ManyToOne(optional = false)
     private PeríodoLetivo idtPeriodo;
@@ -59,11 +59,11 @@ public class CurrículoemOferta implements Serializable {
         this.idCurriculoOferta = idCurriculoOferta;
     }
 
-    public RelaçãoCursoDisciplina getRelaçãoCursoDisciplina() {
+    public Modulo getRelaçãoCursoDisciplina() {
         return relaçãoCursoDisciplina;
     }
 
-    public void setRelaçãoCursoDisciplina(RelaçãoCursoDisciplina relaçãoCursoDisciplina) {
+    public void setRelaçãoCursoDisciplina(Modulo relaçãoCursoDisciplina) {
         this.relaçãoCursoDisciplina = relaçãoCursoDisciplina;
     }
 

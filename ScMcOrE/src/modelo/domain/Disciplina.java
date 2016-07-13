@@ -51,7 +51,7 @@ public class Disciplina implements Serializable {
     @ManyToMany
     private List<Professor> professorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "disciplina")
-    private List<RelaçãoCursoDisciplina> relaçãoCursoDisciplinaList;
+    private List<Modulo> relaçãoCursoDisciplinaList;
 
     public Disciplina() {
     }
@@ -106,11 +106,11 @@ public class Disciplina implements Serializable {
         this.professorList = professorList;
     }
 
-    public List<RelaçãoCursoDisciplina> getRelaçãoCursoDisciplinaList() {
+    public List<Modulo> getRelaçãoCursoDisciplinaList() {
         return relaçãoCursoDisciplinaList;
     }
 
-    public void setRelaçãoCursoDisciplinaList(List<RelaçãoCursoDisciplina> relaçãoCursoDisciplinaList) {
+    public void setRelaçãoCursoDisciplinaList(List<Modulo> relaçãoCursoDisciplinaList) {
         this.relaçãoCursoDisciplinaList = relaçãoCursoDisciplinaList;
     }
 

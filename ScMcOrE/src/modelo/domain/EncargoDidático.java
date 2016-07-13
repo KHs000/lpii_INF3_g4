@@ -53,7 +53,7 @@ public class EncargoDidático implements Serializable {
         @JoinColumn(name = "id_Disciplina", referencedColumnName = "id_Disciplina"),
         @JoinColumn(name = "idt_Relacao", referencedColumnName = "idt_Relacao")})
     @ManyToOne(optional = false)
-    private RelaçãoCursoDisciplina relaçãoCursoDisciplina;
+    private Modulo relaçãoCursoDisciplina;
     @JoinColumn(name = "cpf_Professor", referencedColumnName = "cpf_Professor")
     @ManyToOne(optional = false)
     private Professor cpfProfessor;
@@ -107,11 +107,11 @@ public class EncargoDidático implements Serializable {
         this.diaSemana = diaSemana;
     }
 
-    public RelaçãoCursoDisciplina getRelaçãoCursoDisciplina() {
+    public Modulo getRelaçãoCursoDisciplina() {
         return relaçãoCursoDisciplina;
     }
 
-    public void setRelaçãoCursoDisciplina(RelaçãoCursoDisciplina relaçãoCursoDisciplina) {
+    public void setRelaçãoCursoDisciplina(Modulo relaçãoCursoDisciplina) {
         this.relaçãoCursoDisciplina = relaçãoCursoDisciplina;
     }
 

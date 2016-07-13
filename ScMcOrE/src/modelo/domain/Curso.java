@@ -49,7 +49,7 @@ public class Curso implements Serializable {
     @Column(name = "idt_Turno")
     private Character idtTurno;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "curso")
-    private List<RelaçãoCursoDisciplina> relaçãoCursoDisciplinaList;
+    private List<Modulo> relaçãoCursoDisciplinaList;
     @JoinColumn(name = "cpf_Coordenador", referencedColumnName = "cpf_Professor")
     @ManyToOne(optional = false)
     private Professor cpfCoordenador;
@@ -112,11 +112,11 @@ public class Curso implements Serializable {
         this.idtTurno = idtTurno;
     }
 
-    public List<RelaçãoCursoDisciplina> getRelaçãoCursoDisciplinaList() {
+    public List<Modulo> getRelaçãoCursoDisciplinaList() {
         return relaçãoCursoDisciplinaList;
     }
 
-    public void setRelaçãoCursoDisciplinaList(List<RelaçãoCursoDisciplina> relaçãoCursoDisciplinaList) {
+    public void setRelaçãoCursoDisciplinaList(List<Modulo> relaçãoCursoDisciplinaList) {
         this.relaçãoCursoDisciplinaList = relaçãoCursoDisciplinaList;
     }
 
