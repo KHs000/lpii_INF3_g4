@@ -1,8 +1,8 @@
-package br.cefetmg.inf.model.dao.impl;
+package modelo.dao.impl;
 
-import br.cefetmg.inf.model.dao.IProfessorDAO;
-import br.cefetmg.inf.util.db.JDBCConnectionManager;
-import br.cefetmg.inf.util.db.exception.PersistenciaException;
+import modelo.dao.IProfessorDAO;
+import db.ConnectionManager;
+import db.exception.PersistenciaException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ public class ProfessorDAO implements IProfessorDAO {
         String id = null;
 
         try{
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
             String sql = "INSERT INTO Professor (nom_Professor, cpf_Professor, log_Professor, pwd_Professor) " + "VALUES(?, ?, ?, ?)";
 
@@ -42,7 +42,7 @@ public class ProfessorDAO implements IProfessorDAO {
     public void atualizar(Professor professor) throws PersistenciaException {
 
         try{
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
             String sql = "UPDATE Professor " +
                             " SET cpf_Professor = ?, " +
@@ -72,7 +72,7 @@ public class ProfessorDAO implements IProfessorDAO {
     public void excluir(Long id) throws PersistenciaException {
 
         try{
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
             String sql = "DELETE FROM professor WHERE id = ?";
 
@@ -94,7 +94,7 @@ public class ProfessorDAO implements IProfessorDAO {
         List<Professor> professorList = new ArrayList<Professor>();
 
         try{
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
             String sql = "SELECT * FROM Professor";
 
@@ -123,7 +123,7 @@ public class ProfessorDAO implements IProfessorDAO {
     public Professor consultarPorId(Long id) throws PersistenciaException {
         Professor professor = null;
         try {
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
             String sql = "SELECT * FROM Professor WHERE cpf_Professor = ?";
 
@@ -153,7 +153,7 @@ public class ProfessorDAO implements IProfessorDAO {
 
         Professor professor = null;
         try {
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
             String sql = "SELECT * FROM Professor WHERE nom_Professor = " + nome;
 
@@ -179,6 +179,16 @@ public class ProfessorDAO implements IProfessorDAO {
     }
 
     public Long inserir(Professor obj) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void excluir(Integer id) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Professor consultarPorId(Integer id) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

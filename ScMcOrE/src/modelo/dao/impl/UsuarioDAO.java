@@ -1,14 +1,16 @@
 
-package br.cefetmg.inf.model.dao.impl;
+package modelo.dao.impl;
 
-import WEBINF.classes.br.cefetmg.inf.model.dao.IUsuarioDAO;
-import br.cefetmg.inf.util.db.JDBCConnectionManager;
-import br.cefetmg.inf.util.db.exception.PersistenciaException;
+
+
+import db.ConnectionManager;
+import db.exception.PersistenciaException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.dao.IUsuarioDAO;
 import modelo.domain.Usuario;
 
 /**
@@ -21,9 +23,9 @@ public class UsuarioDAO implements IUsuarioDAO {
         
         Usuario usuario = null;
         try {
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM Usuário WHERE log_Usuario = " + login;
+            String sql = "SELECT * FROM Usuï¿½rio WHERE log_Usuario = " + login;
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, login);
@@ -50,9 +52,9 @@ public class UsuarioDAO implements IUsuarioDAO {
         String CPF = null;
 
         try{
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "INSERT INTO Usuário (cpf_Usuario, log_Usuario, pwd_Usuario) " + 
+            String sql = "INSERT INTO Usuï¿½rio (cpf_Usuario, log_Usuario, pwd_Usuario) " + 
                     "VALUES(?,?,?) RETURNING cpf_Usuario";
 
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -80,9 +82,9 @@ public class UsuarioDAO implements IUsuarioDAO {
     public void atualizar(Usuario usuario) throws PersistenciaException {
         
         try{
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "UPDATE Usuário " +
+            String sql = "UPDATE Usuï¿½rio " +
                             " SET log_Usuario = ?, " +
                             "     pwd_Usuario = ?," +
                             " WHERE cpf_Usuario = ?";
@@ -105,7 +107,7 @@ public class UsuarioDAO implements IUsuarioDAO {
     public void excluir(Long cpf_Usuario) throws PersistenciaException {
         
         try{
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
             String sql = "DELETE FROM usuario WHERE cpf_Usuario = ?";
 
@@ -124,9 +126,9 @@ public class UsuarioDAO implements IUsuarioDAO {
     public Usuario consultarPorId(Long cpf_Usuario) throws PersistenciaException {
         Usuario usuario = null;
         try {
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM Usuário WHERE cpf_Usuario = ?";
+            String sql = "SELECT * FROM Usuï¿½rio WHERE cpf_Usuario = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setLong(1, cpf_Usuario);
@@ -153,9 +155,9 @@ public class UsuarioDAO implements IUsuarioDAO {
         List<Usuario> usuarioList = new ArrayList<Usuario>();
         
         try{
-            Connection connection = JDBCConnectionManager.getInstance().getConnection();
+            Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM Usuário";
+            String sql = "SELECT * FROM Usuï¿½rio";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -178,6 +180,16 @@ public class UsuarioDAO implements IUsuarioDAO {
     }
 
     public Long inserir(Usuario obj) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void excluir(Integer id) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Usuario consultarPorId(Integer id) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.cefetmg.inf.model.dao.impl;
+package modelo.dao;
 
-import br.cefetmg.inf.util.db.persistence.GenericNamedDAO;
+
 import modelo.domain.Usuario;
 
 /**
