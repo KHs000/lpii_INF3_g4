@@ -33,10 +33,10 @@ public class Modulo implements Serializable {
     protected ModuloPK relaçãoCursoDisciplinaPK;
     @Basic(optional = false)
     @Column(name = "idt_Serie")
-    private short idtSerie;
+    private Short idtSerie;
     @Basic(optional = false)
     @Column(name = "idt_Modulo")
-    private short idtModulo;
+    private Short idtModulo;
     @JoinColumn(name = "id_Disciplina", referencedColumnName = "id_Disciplina", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Disciplina disciplina;
@@ -73,21 +73,25 @@ public class Modulo implements Serializable {
         this.relaçãoCursoDisciplinaPK = relaçãoCursoDisciplinaPK;
     }
 
-    public short getIdtSerie() {
+    public Short getIdtSerie() {
         return idtSerie;
     }
 
-    public void setIdtSerie(short idtSerie) {
+    public void setIdtSerie(Short idtSerie) {
         this.idtSerie = idtSerie;
     }
 
-    public short getIdtModulo() {
+    
+
+    public Short getIdtModulo() {
         return idtModulo;
     }
 
-    public void setIdtModulo(short idtModulo) {
+    public void setIdtModulo(Short idtModulo) {
         this.idtModulo = idtModulo;
     }
+
+   
 
     public Disciplina getDisciplina() {
         return disciplina;
