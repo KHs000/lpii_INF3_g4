@@ -16,7 +16,9 @@ import modelo.domain.CurrículoemOferta;
  */
 public interface IManterCurriculoEmOferta {
     
-    public Long cadastrar(CurrículoemOferta curriculo) throws PersistenciaException, NegocioException;
+    public Integer cadastrar(CurrículoemOferta curriculo) throws PersistenciaException, NegocioException;
+    public void atualizar(CurrículoemOferta curriculo) throws PersistenciaException, NegocioException;
+    public void excluir(CurrículoemOferta curriculo) throws PersistenciaException, NegocioException;
     public List<CurrículoemOferta> listarTodos() throws PersistenciaException, NegocioException;
     
 }

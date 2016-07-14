@@ -62,8 +62,8 @@ public class EncargoDidaticoDAO implements IEncargoDidaticoDAO {
     public void atualizar(EncargoDidático obj) throws PersistenciaException {
         try{
             Connection connection = new PostgresqlConnection().getConnection();
-        String sql = "UPDATE Encargo Didático SET hor_Inicio = ?, hor_Fim = ?, dia_Semana = ?, cpf_Professor = ?, id_Ambiente = ?, id_Curso = ?, id_Disciplina = ?, idt_Relacao = ? WHERE id_Encargo = ?";
-        PreparedStatement statement = connection.prepareStatement(sql);
+            String sql = "UPDATE Encargo Didático SET hor_Inicio = ?, hor_Fim = ?, dia_Semana = ?, cpf_Professor = ?, id_Ambiente = ?, id_Curso = ?, id_Disciplina = ?, idt_Relacao = ? WHERE id_Encargo = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setTime(1, obj.getHorInicio());
             statement.setTime(2, obj.getHorFim());

@@ -46,7 +46,7 @@ public class ManterEncargoDidatico implements IManterEncargoDidatico {
 
     @Override
     public List<EncargoDidático> listarTodos() throws PersistenciaException, NegocioException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new EncargoDidaticoDAO().listarTodos();
     }
 
     @Override

@@ -5,12 +5,12 @@
  */
 package modelo.dao;
 
-import modelo.domain.CurrículoemOferta;
+import modelo.domain.Modulo;
 
 /**
  *
- * @author helde
+ * @author DASJ
  */
-public interface ICurrículoEmOfertaDAO extends GenericDAO<CurrículoemOferta> {
+public interface IModuloDAO extends GenericDAO<Modulo> {
     
 }
