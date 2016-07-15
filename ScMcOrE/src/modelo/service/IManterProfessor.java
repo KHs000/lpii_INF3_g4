@@ -5,6 +5,7 @@
  */
 package modelo.service;
 
+import modelo.domain.Turma;
 import db.exception.NegocioException;
 import db.exception.PersistenciaException;
 import java.util.List;

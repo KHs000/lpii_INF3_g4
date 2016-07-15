@@ -38,7 +38,7 @@ public class CurriculoEmOfertaDAO implements ICurrículoEmOfertaDAO {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                id = resultSet.getInt("id_Curriculo_Oferta");
+                id = resultSet.getInt("id");
                 obj.setIdCurriculoOferta(id);
             }
 

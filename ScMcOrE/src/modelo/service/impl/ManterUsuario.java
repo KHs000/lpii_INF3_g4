@@ -1,11 +1,11 @@
 
-package modelo.service.impl;
+package br.cefetmg.inf.model.service.impl;
 
-import modelo.dao.impl.UsuarioDAO;
+import br.cefetmg.inf.model.dao.impl.UsuarioDAO;
 import modelo.domain.Usuario;
-import modelo.service.IManterUsuario;
-import db.exception.NegocioException;
-import db.exception.PersistenciaException;
+import br.cefetmg.inf.model.service.IManterUsuario;
+import br.cefetmg.inf.util.db.exception.NegocioException;
+import br.cefetmg.inf.util.db.exception.PersistenciaException;
 import java.util.List;
 
 /**
@@ -17,12 +17,16 @@ public class ManterUsuario implements IManterUsuario{
     @Override
     public void cadastrar(Usuario usuario) throws PersistenciaException, NegocioException {
         
-        if (usuario.getLogUsuario() == null || usuario.getLogUsuario() == "" || usuario.getLogUsuario().length()>12)
-            throw new NegocioException("Login de usuário inválido.");
+        if (usuario.getCpfUsuario()== "" || usuario.getCpfUsuario()== null || usuario.getCpfUsuario().length()>11)
+            throw new NegocioException("CPF inválido");
+        if (usuario.getCpfUsuario()== "" || usuario.getCpfUsuario()== null || usuario.getCpfUsuario().length()>11)
+            throw new NegocioException("CPF inválido");
+        if (usuario.getCpfUsuario()== "" || usuario.getCpfUsuario()== null || usuario.getCpfUsuario().length()>11)
+            throw new NegocioException("CPF inválido");
         
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Integer idUsuario =  usuarioDAO.inserir(usuario);
-        usuario.setIdUsuario(idUsuario);
+        String usuarioCpf =  usuarioDAO.Inserir(usuario);
+        usuario.setCpfUsuario(usuarioCpf);
     }
 
     @Override

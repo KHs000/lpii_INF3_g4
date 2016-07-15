@@ -13,25 +13,30 @@ package modelo.domain;
 
 public class Usuario {
     
-    private Integer idUsuario;
+    private String cpfUsuario;
     private String logUsuario;
     private String pwdUsuario;
 
     public Usuario() {
     }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Usuario(String cpfUsuario) {
+        this.cpfUsuario = cpfUsuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public Usuario(String cpfUsuario, String logUsuario, String pwdUsuario) {
+        this.cpfUsuario = cpfUsuario;
+        this.logUsuario = logUsuario;
+        this.pwdUsuario = pwdUsuario;
     }
 
-   
+    public String getCpfUsuario() {
+        return cpfUsuario;
+    }
 
-
-    
+    public void setCpfUsuario(String cpfUsuario) {
+        this.cpfUsuario = cpfUsuario;
+    }
 
     public String getLogUsuario() {
         return logUsuario;
@@ -52,7 +57,7 @@ public class Usuario {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idUsuario != null ? idUsuario.hashCode() : 0);
+        hash += (cpfUsuario != null ? cpfUsuario.hashCode() : 0);
         return hash;
     }
 
@@ -63,7 +68,7 @@ public class Usuario {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
+        if ((this.cpfUsuario == null && other.cpfUsuario != null) || (this.cpfUsuario != null && !this.cpfUsuario.equals(other.cpfUsuario))) {
             return false;
         }
         return true;
@@ -71,7 +76,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "modelo.domain.Usuario[ idUsuario=" + idUsuario + " ]";
+        return "modelo.domain.Usuario[ cpfUsuario=" + cpfUsuario + " ]";
     }
     
 }

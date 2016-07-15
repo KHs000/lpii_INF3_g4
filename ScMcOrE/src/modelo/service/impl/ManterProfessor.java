@@ -1,13 +1,12 @@
 
-package modelo.service.impl;
+package br.cefetmg.inf.model.service.impl;
 
-
-import modelo.dao.impl.ProfessorDAO;
-import modelo.service.IManterProfessor;
-import db.exception.NegocioException;
-import db.exception.PersistenciaException;
+import br.cefetmg.inf.model.dao.IProfessorDAO;
+import br.cefetmg.inf.model.dao.impl.ProfessorDAO;
+import br.cefetmg.inf.model.service.IManterProfessor;
+import br.cefetmg.inf.util.db.exception.NegocioException;
+import br.cefetmg.inf.util.db.exception.PersistenciaException;
 import java.util.List;
-import modelo.dao.IProfessorDAO;
 import modelo.domain.Professor;
 
 /**
@@ -29,6 +28,8 @@ public class ManterProfessor implements IManterProfessor{
         if ( professor.getPwdProfessor()== null || professor.getPwdProfessor()== "" || professor.getPwdProfessor().length()<8 )
             throw new NegocioException("Senha inválida");
         ProfessorDAO professorDAO = new ProfessorDAO();
+        String CpfProfessor = professorDAO.Inserir(professor);
+        professor.setCpfProfessor(CpfProfessor);
         
     }
 

@@ -5,12 +5,12 @@
  */
 package modelo.service.impl;
 
-import db.exception.PersistenciaException;
+import db.PersistenciaException;
 import java.util.List;
 import modelo.dao.impl.PeríodoLetivoDAO;
 import modelo.domain.PeríodoLetivo;
 import modelo.service.IManterPeriodoLetivo;
-import db.exception.NegocioException;
+import db.NegocioException;
 
 /**
  *

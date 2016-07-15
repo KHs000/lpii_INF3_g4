@@ -25,7 +25,7 @@ public class UsuarioDAO implements IUsuarioDAO {
         try {
             Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM Usuário WHERE log_Usuario = ? " + login;
+            String sql = "SELECT * FROM Usu�rio WHERE log_Usuario = " + login;
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, login);
@@ -34,7 +34,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
             if(resultSet.next()) {
                     usuario = new Usuario();
-                    usuario.setIdUsuario(resultSet.getInt("id_Usuario"));
+                    usuario.setCpfUsuario(resultSet.getString("cpf_Usuario"));
                     usuario.setLogUsuario(resultSet.getString("log_Usuario"));
                     usuario.setPwdUsuario(resultSet.getString("pwd_Usuario"));
             }
@@ -47,26 +47,27 @@ public class UsuarioDAO implements IUsuarioDAO {
         return usuario;
     }
 
-    public Integer inserir(Usuario usuario) throws PersistenciaException {
+    public String Inserir(Usuario usuario) throws PersistenciaException {
         
-        Integer id = null;
+        String CPF = null;
 
         try{
             Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "INSERT INTO Usuário (log_Usuario, pwd_Usuario) " + 
-                    "VALUES(?,?) RETURNING id_Usuario";
+            String sql = "INSERT INTO Usu�rio (cpf_Usuario, log_Usuario, pwd_Usuario) " + 
+                    "VALUES(?,?,?) RETURNING cpf_Usuario";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setString(1, usuario.getLogUsuario());
-            statement.setString(2, usuario.getPwdUsuario());
+            statement.setString(1, usuario.getCpfUsuario());
+            statement.setString(2, usuario.getLogUsuario());
+            statement.setString(3, usuario.getPwdUsuario());
             
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                id = (resultSet.getInt("id_Usuario"));
-                usuario.setIdUsuario(id);
+                CPF = (resultSet.getString("cpf_Usuario"));
+                usuario.setCpfUsuario(CPF);
             }
 
             connection.close();
@@ -75,7 +76,7 @@ public class UsuarioDAO implements IUsuarioDAO {
             throw new PersistenciaException(e.getMessage(), e);
         }
 
-        return id;
+        return CPF;
     }
 
     public void atualizar(Usuario usuario) throws PersistenciaException {
@@ -83,16 +84,16 @@ public class UsuarioDAO implements IUsuarioDAO {
         try{
             Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "UPDATE Usuário " +
+            String sql = "UPDATE Usu�rio " +
                             " SET log_Usuario = ?, " +
                             "     pwd_Usuario = ?," +
-                            " WHERE id_Usuario = ?";
+                            " WHERE cpf_Usuario = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
             statement.setString(1, usuario.getLogUsuario());
             statement.setString(2, usuario.getPwdUsuario());
-            statement.setInt(3, usuario.getIdUsuario());
+            statement.setString(3, usuario.getCpfUsuario());
 
             statement.execute();
 
@@ -103,16 +104,16 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
-    public void excluir(Integer id_Usuario) throws PersistenciaException {
+    public void excluir(Long cpf_Usuario) throws PersistenciaException {
         
         try{
             Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "DELETE FROM Usuário WHERE id_Usuario = ?";
+            String sql = "DELETE FROM usuario WHERE cpf_Usuario = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setInt(1, id_Usuario);
+            statement.setLong(1, cpf_Usuario);
 
             statement.execute();
             connection.close();
@@ -122,20 +123,21 @@ public class UsuarioDAO implements IUsuarioDAO {
         }
     }
 
-    public Usuario consultarPorId(Integer id) throws PersistenciaException {
+    public Usuario consultarPorId(Long cpf_Usuario) throws PersistenciaException {
         Usuario usuario = null;
         try {
             Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM Usuário WHERE id_Usuario = ?";
+            String sql = "SELECT * FROM Usu�rio WHERE cpf_Usuario = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, id);
+            statement.setLong(1, cpf_Usuario);
 
             ResultSet resultSet = statement.executeQuery();
 
             if(resultSet.next()) {
                     usuario = new Usuario();
+                    usuario.setCpfUsuario(resultSet.getString("cpf_Usuario"));
                     usuario.setLogUsuario(resultSet.getString("log_Usuario"));
                     usuario.setPwdUsuario(resultSet.getString("pwd_Usuario"));
             }
@@ -155,7 +157,7 @@ public class UsuarioDAO implements IUsuarioDAO {
         try{
             Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "SELECT * FROM Usuário";
+            String sql = "SELECT * FROM Usu�rio";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -163,7 +165,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
             while(resultSet.next()){
                     Usuario usuario = new Usuario();
-                    usuario.setIdUsuario(resultSet.getInt("id_Usuario"));
+                    usuario.setCpfUsuario(resultSet.getString("cpf_Usuario"));
                     usuario.setLogUsuario(resultSet.getString("log_Usuario"));
                     usuario.setPwdUsuario(resultSet.getString("pwd_Usuario"));
 
@@ -175,6 +177,20 @@ public class UsuarioDAO implements IUsuarioDAO {
                 throw new PersistenciaException(e.getMessage(), e);
         }
         return usuarioList;
+    }
+
+    public Long inserir(Usuario obj) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void excluir(Integer id) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Usuario consultarPorId(Integer id) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

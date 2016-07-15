@@ -12,8 +12,9 @@ import modelo.domain.Professor;
 
 public class ProfessorDAO implements IProfessorDAO {
 
-    @Override
-    public void inserir(Professor professor) throws PersistenciaException {
+    public String Inserir(Professor professor) throws PersistenciaException {
+
+        String id = null;
 
         try{
             Connection connection = ConnectionManager.getInstance().getConnection();
@@ -26,8 +27,8 @@ public class ProfessorDAO implements IProfessorDAO {
             statement.setString(2, professor.getCpfProfessor());
             statement.setString(3, professor.getLogProfessor());
             statement.setString(4, professor.getPwdProfessor());
-
-            statement.execute();
+            id=professor.getCpfProfessor();
+            ResultSet resultSet = statement.executeQuery();
 
             connection.close();
         }catch (Exception e){
@@ -35,6 +36,7 @@ public class ProfessorDAO implements IProfessorDAO {
             throw new PersistenciaException(e.getMessage(), e);
         }
 
+        return id;
     }
 
     public void atualizar(Professor professor) throws PersistenciaException {
@@ -43,19 +45,19 @@ public class ProfessorDAO implements IProfessorDAO {
             Connection connection = ConnectionManager.getInstance().getConnection();
 
             String sql = "UPDATE Professor " +
-                            " SET " +
+                            " SET cpf_Professor = ?, " +
                             "     nom_Professor = ?," +
                             "     log_Professor = ?," +
                             "     pwd_Professor = ?" +
-                            " WHERE cpf_Professor = ?";
+                            " WHERE id = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
-           
-            statement.setString(1,professor.getNomProfessor());
-            statement.setString(2, professor.getLogProfessor());
-            statement.setString(3, professor.getPwdProfessor());
-            statement.setString(4, professor.getCpfProfessor());
+            statement.setString(1,professor.getCpfProfessor());
+            statement.setString(2,professor.getNomProfessor());
+            statement.setString(3, professor.getLogProfessor());
+            statement.setString(4, professor.getPwdProfessor());
+            statement.setString(5, professor.getCpfProfessor());
 
             statement.execute();
 
@@ -67,16 +69,16 @@ public class ProfessorDAO implements IProfessorDAO {
     }
 
     @Override
-    public void excluir(String cpf) throws PersistenciaException {
+    public void excluir(Long id) throws PersistenciaException {
 
         try{
             Connection connection = ConnectionManager.getInstance().getConnection();
 
-            String sql = "DELETE FROM professor WHERE cpf_Professor = ?";
+            String sql = "DELETE FROM professor WHERE id = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setString(1, cpf);
+            statement.setLong(1, id);
 
             statement.execute();
             connection.close();
@@ -118,7 +120,7 @@ public class ProfessorDAO implements IProfessorDAO {
     }
 
     @Override
-    public Professor consultarPorCpf(String cpf) throws PersistenciaException {
+    public Professor consultarPorId(Long id) throws PersistenciaException {
         Professor professor = null;
         try {
             Connection connection = ConnectionManager.getInstance().getConnection();
@@ -126,7 +128,7 @@ public class ProfessorDAO implements IProfessorDAO {
             String sql = "SELECT * FROM Professor WHERE cpf_Professor = ?";
 
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, cpf);
+            statement.setLong(1, id);
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -174,6 +176,20 @@ public class ProfessorDAO implements IProfessorDAO {
                 throw new PersistenciaException(e.getMessage(), e);
         }
         return professor;
+    }
+
+    public Long inserir(Professor obj) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void excluir(Integer id) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Professor consultarPorId(Integer id) throws PersistenciaException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
