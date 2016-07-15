@@ -41,13 +41,13 @@ public class Curso implements Serializable {
     private String nomCurso;
     @Basic(optional = false)
     @Column(name = "idt_Regime")
-    private Character idtRegime;
+    private String idtRegime;
     @Basic(optional = false)
     @Column(name = "nvl_Ensino")
-    private Character nvlEnsino;
+    private String nvlEnsino;
     @Basic(optional = false)
     @Column(name = "idt_Turno")
-    private Character idtTurno;
+    private String idtTurno;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "curso")
     private List<Modulo> relaçãoCursoDisciplinaList;
     @JoinColumn(name = "cpf_Coordenador", referencedColumnName = "cpf_Professor")
@@ -64,7 +64,7 @@ public class Curso implements Serializable {
         this.idCurso = idCurso;
     }
 
-    public Curso(Integer idCurso, String nomCurso, Character idtRegime, Character nvlEnsino, Character idtTurno) {
+    public Curso(Integer idCurso, String nomCurso, String idtRegime, String nvlEnsino, String idtTurno) {
         this.idCurso = idCurso;
         this.nomCurso = nomCurso;
         this.idtRegime = idtRegime;
@@ -88,29 +88,31 @@ public class Curso implements Serializable {
         this.nomCurso = nomCurso;
     }
 
-    public Character getIdtRegime() {
+    public String getIdtRegime() {
         return idtRegime;
     }
 
-    public void setIdtRegime(Character idtRegime) {
+    public void setIdtRegime(String idtRegime) {
         this.idtRegime = idtRegime;
     }
 
-    public Character getNvlEnsino() {
+    public String getNvlEnsino() {
         return nvlEnsino;
     }
 
-    public void setNvlEnsino(Character nvlEnsino) {
+    public void setNvlEnsino(String nvlEnsino) {
         this.nvlEnsino = nvlEnsino;
     }
 
-    public Character getIdtTurno() {
+    public String getIdtTurno() {
         return idtTurno;
     }
 
-    public void setIdtTurno(Character idtTurno) {
+    public void setIdtTurno(String idtTurno) {
         this.idtTurno = idtTurno;
     }
+
+    
 
     public List<Modulo> getRelaçãoCursoDisciplinaList() {
         return relaçãoCursoDisciplinaList;

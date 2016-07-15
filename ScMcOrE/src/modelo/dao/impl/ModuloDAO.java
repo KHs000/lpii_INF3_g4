@@ -19,7 +19,7 @@ import modelo.domain.Modulo;
  *
  * @author DASJ
  */
-class ModuloDAO implements IModuloDAO {
+public class ModuloDAO implements IModuloDAO {
 
     public ModuloDAO() {
     }
@@ -44,7 +44,7 @@ class ModuloDAO implements IModuloDAO {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                id = resultSet.getInt("id");
+                id = resultSet.getInt("idt_Relacao");
                 obj.getRelaçãoCursoDisciplinaPK().setIdtRelacao(id);
             }
 
