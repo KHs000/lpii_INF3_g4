@@ -5,8 +5,8 @@
  */
 package modelo.service;
 
-import db.NegocioException;
-import db.PersistenciaException;
+import db.exception.NegocioException;
+import db.exception.PersistenciaException;
 import java.util.List;
 import modelo.domain.PeríodoLetivo;
 

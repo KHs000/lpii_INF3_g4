@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/domain/CurrículoemOferta.java</file>
+            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/dao/impl/EncargoDidaticoDAO.java</file>
+            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/dao/impl/CurriculoEmOfertaDAO.java</file>
+            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/dao/impl/ModuloDAO.java</file>
+            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/domain/EncargoDidático.java</file>
+        </group>
     </open-files>
 </project-private>

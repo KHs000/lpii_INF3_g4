@@ -20,8 +20,8 @@ public class Professor {
     private String logProfessor;
     private String pwdProfessor;
     private List<Disciplina> disciplinaList;
-    private List<Alocacao> alocacaoList;
-    private List<EncargoDidatico> encargoDidaticoList;
+    private List<Alocação> alocacaoList;
+    private List<EncargoDidático> encargoDidaticoList;
     private List<Curso> cursoList;
 
     public Professor() {
@@ -78,19 +78,19 @@ public class Professor {
         this.disciplinaList = disciplinaList;
     }
 
-    public List<Alocacao> getAlocacaoList() {
+    public List<Alocação> getAlocacaoList() {
         return alocacaoList;
     }
 
-    public void setAlocacaoList(List<Alocacao> alocacaoList) {
+    public void setAlocacaoList(List<Alocação> alocacaoList) {
         this.alocacaoList = alocacaoList;
     }
 
-    public List<EncargoDidatico> getEncargoDidaticoList() {
+    public List<EncargoDidático> getEncargoDidaticoList() {
         return encargoDidaticoList;
     }
 
-    public void setEncargoDidaticoList(List<EncargoDidatico> encargoDidaticoList) {
+    public void setEncargoDidaticoList(List<EncargoDidático> encargoDidaticoList) {
         this.encargoDidaticoList = encargoDidaticoList;
     }
 

@@ -6,7 +6,7 @@
 package modelo.dao.impl;
 
 import db.ConnectionManager;
-import db.PersistenciaException;
+import db.exception.PersistenciaException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

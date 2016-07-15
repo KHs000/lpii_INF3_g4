@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.cefetmg.inf.model.service;
+package modelo.service;
 
-import br.cefetmg.inf.model.domain.Turma;
-import br.cefetmg.inf.util.db.exception.NegocioException;
-import br.cefetmg.inf.util.db.exception.PersistenciaException;
+import db.exception.NegocioException;
+import db.exception.PersistenciaException;
 import java.util.List;
 import modelo.domain.Professor;
 

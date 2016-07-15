@@ -1,8 +1,9 @@
 
-package br.cefetmg.inf.model.service;
+package modelo.service;
 
-import br.cefetmg.inf.util.db.exception.NegocioException;
-import br.cefetmg.inf.util.db.exception.PersistenciaException;
+
+import db.exception.NegocioException;
+import db.exception.PersistenciaException;
 import java.util.List;
 import modelo.domain.Usuario;
 

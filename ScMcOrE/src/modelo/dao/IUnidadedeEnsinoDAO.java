@@ -5,7 +5,7 @@
  */
 package modelo.dao;
 
-import db.PersistenciaException;
+import db.exception.PersistenciaException;
 import java.util.List;
 import modelo.domain.UnidadedeEnsino;
 

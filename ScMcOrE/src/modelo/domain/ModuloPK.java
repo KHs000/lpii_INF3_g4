@@ -18,7 +18,7 @@ import javax.persistence.Embeddable;
 public class ModuloPK implements Serializable {
     @Basic(optional = false)
     @Column(name = "idt_Relacao")
-    private int idtRelacao;
+    private Integer idtRelacao;
     @Basic(optional = false)
     @Column(name = "id_Curso")
     private int idCurso;
@@ -35,11 +35,11 @@ public class ModuloPK implements Serializable {
         this.idDisciplina = idDisciplina;
     }
 
-    public int getIdtRelacao() {
+    public Integer getIdtRelacao() {
         return idtRelacao;
     }
 
-    public void setIdtRelacao(int idtRelacao) {
+    public void setIdtRelacao(Integer idtRelacao) {
         this.idtRelacao = idtRelacao;
     }
 
