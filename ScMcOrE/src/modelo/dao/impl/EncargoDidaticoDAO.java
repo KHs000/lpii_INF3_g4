@@ -45,7 +45,7 @@ public class EncargoDidaticoDAO implements IEncargoDidaticoDAO {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                id = resultSet.getInt("id");
+                id = resultSet.getInt("id_Encargo");
                 obj.setIdEncargo(id);
             }
 
@@ -126,11 +126,11 @@ public class EncargoDidaticoDAO implements IEncargoDidaticoDAO {
                     encargo.setHorInicio(resultSet.getTime("hor_Inicio"));
                     encargo.setHorFim(resultSet.getTime("hor_Fim"));
                     encargo.setDiaSemana(resultSet.getShort("dia_Semana"));
-                    encargo.setCpfProfessor(new ProfessorDAO().consultarPorId(resultSet.getInt("cpf_Professor")));
+                    encargo.setCpfProfessor(new ProfessorDAO().consultarPorCpf(resultSet.getString("cpf_Professor")));
                     encargo.setIdAmbiente(new AmbienteDAO().consultarPorId(resultSet.getInt("id_Ambiente")));
-                    encargo.setIdCurso(new CursoDAO().consultarPorId(resultSet.getInt("id_Curso")));
-                    encargo.setIdDisciplina(new DisciplinaDAO().consultarPorId(resultSet.getInt("id_Disciplina")));
-                    encargo.setIdtRelacao(new ModuloDAO().consultarPorId(resultSet.getInt("idt_Relacao")));
+                    
+                    encargo.setRelaçãoCursoDisciplina(new ModuloDAO().consultarPorId(resultSet.getInt("idt_Relacao")));
+
             }
             connection.close();
 
@@ -160,10 +160,9 @@ public class EncargoDidaticoDAO implements IEncargoDidaticoDAO {
                     encargo.setHorInicio(resultSet.getTime("hor_Inicio"));
                     encargo.setHorFim(resultSet.getTime("hor_Fim"));
                     encargo.setDiaSemana(resultSet.getShort("dia_Semana"));
-                    encargo.setCpfProfessor(new ProfessorDAO().consultarPorId(resultSet.getInt("cpf_Professor")));
+                    encargo.setCpfProfessor(new ProfessorDAO().consultarPorCpf(resultSet.getString("cpf_Professor")));
                     encargo.setIdAmbiente(new AmbienteDAO().consultarPorId(resultSet.getInt("id_Ambiente")));
-                    encargo.setIdCurso(new CursoDAO().consultarPorId(resultSet.getInt("id_Curso")));
-                    encargo.setIdDisciplina(new DisciplinaDAO().consultarPorId(resultSet.getInt("id_Disciplina")));
+
                     encargo.setRelaçãoCursoDisciplina((new ModuloDAO().consultarPorId(resultSet.getInt("idt_Relacao"))));
 
                     encargoList.add(encargo);

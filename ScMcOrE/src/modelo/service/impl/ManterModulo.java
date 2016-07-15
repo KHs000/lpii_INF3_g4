@@ -10,6 +10,7 @@ import db.exception.PersistenciaException;
 import java.util.List;
 import modelo.domain.Modulo;
 import modelo.service.IManterModulo;
+import modelo.dao.impl.ModuloDAO;
 
 /**
  *
