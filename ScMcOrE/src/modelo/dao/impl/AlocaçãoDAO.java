@@ -119,8 +119,8 @@ public class AlocaçãoDAO implements IAlocaçãoDAO{
                     
                     alocação.setIdAlocacao(resultSet.getInt("id_Alocacao"));
                     alocação.setDatAlocacao(resultSet.getDate("dat_Alocacao"));
-                    alocação.setCpfProfessor(new ProfessorDAO().consultaPorId(resultSet.getString("cpf_Professor")));
-                    alocação.setIdAmbiente(new ProfessorDAO().consultaPorId(resultSet.getInt("id_Ambiente")));
+                    alocação.setCpfProfessor(new ProfessorDAO().consultarPorCpf(resultSet.getString("cpf_Professor")));
+                    alocação.setIdAmbiente(new AmbienteDAO().consultarPorId(resultSet.getInt("id_Ambiente")));
                     
             }
             connection.close();
@@ -152,8 +152,8 @@ public class AlocaçãoDAO implements IAlocaçãoDAO{
                     
                     alocação.setIdAlocacao(resultSet.getInt("id_Alocacao"));
                     alocação.setDatAlocacao(resultSet.getDate("dat_Alocacao"));
-                    alocação.setCpfProfessor(new ProfessorDAO().consultaPorId(resultSet.getString("cpf_Professor")));
-                    alocação.setIdAmbiente(new ProfessorDAO().consultaPorId(resultSet.getInt("id_Ambiente")));
+                    alocação.setCpfProfessor(new ProfessorDAO().consultarPorCpf(resultSet.getString("cpf_Professor")));
+                    alocação.setIdAmbiente(new AmbienteDAO().consultarPorId(resultSet.getInt("id_Ambiente")));
                     
 
                     curriculoList.add(alocação);
