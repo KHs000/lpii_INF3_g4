@@ -11,6 +11,6 @@ import modelo.domain.AmbientesdeEnsino;
  *
  * @author DASJ
  */
-public interface IAmbienteDAO extends GenericNamedDAO<AmbientesdeEnsino>{
+public interface IAmbienteDAO extends GenericDAO<AmbientesdeEnsino>{
     
 }

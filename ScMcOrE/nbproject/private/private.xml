@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/domain/CurrículoemOferta.java</file>
-            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/dao/impl/EncargoDidaticoDAO.java</file>
-            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/dao/impl/CurriculoEmOfertaDAO.java</file>
-            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/dao/impl/ModuloDAO.java</file>
-            <file>file:/D:/GitHub/lpii_INF3_g4/ScMcOrE/src/modelo/domain/EncargoDidático.java</file>
+            <file>file:/C:/Users/Cliente/Documents/Documentos/Java%20Javoso/lpii_INF3_g4/ScMcOrE/src/modelo/dao/impl/AmbienteDAO.java</file>
+            <file>file:/C:/Users/Cliente/Documents/Documentos/Java%20Javoso/lpii_INF3_g4/ScMcOrE/src/modelo/service/impl/ManterAmbiente.java</file>
+            <file>file:/C:/Users/Cliente/Documents/Documentos/Java%20Javoso/lpii_INF3_g4/ScMcOrE/src/modelo/service/impl/ManterCurriculoEmOferta.java</file>
+            <file>file:/C:/Users/Cliente/Documents/Documentos/Java%20Javoso/lpii_INF3_g4/ScMcOrE/src/modelo/dao/impl/AlocaçãoDAO.java</file>
         </group>
     </open-files>
 </project-private>
